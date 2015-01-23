@@ -35,7 +35,7 @@ To see a full example look at index.html.
 
 quickClone accepts a configuration object with the following properties.  All of them are optional.
 
-property  |  type | 
+property  |  type | notes
 ----------|-------|--------
 afterAdd | function | this function is run after a clone instance is added ( **this** references the qclone-wrapper DOM element )
 afterRemove | function | this function is run after a clone instance is removed
