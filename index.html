@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>quickClone example</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="quickClone.jquery.js"></script>
+<style>
+label:after { content:" : ";}
+.clone { padding: 10px 10px 0; border:1px solid #eee;}
+.clone.phone { width:270px;}
+.clone.address { width:600px;}
+</style>
+<script>
+$(function() {
+	$('.clone').quickClone({
+					afterAdd:function() { 
+						var   names=[]
+							, msg = 'Below are the name attributes for each of the form elements cloned in the instance that was just added:\n\n'
+							;
+						$(this).find('.qclone-instance:last >.qclone-content *')
+							.filter('input,select,textarea')
+							.each(function() {names.push($(this).attr('name'));});
+						$('pre').text(msg+names.join("\n"));
+					},
+					afterRemove:function() { 
+						$('pre').text('instance removed from '+$(this).attr('class'));
+					},
+					html : {style: "margin: 0 0 10px;", class:"aClass bClass"}  // html attributes for .qclone-instance
+					} );
+});
+</script>
+</head>
+
+<body>
+
+<h1>quickClone Example</h1>
+
+<form>
+    <div class="clone phone">
+        <label>Phone</label>
+        <input type="text" name="_{{n}}_requestorPhone_areacode" size="3" placeholder="(      )"/>-
+        <input type="text" name="_{{n}}_requestorPhone_exchange" size="3"/>-
+        <input type="text" name="_{{n}}_requestorPhone_number" size="4"/>
+    </div>
+    
+    <div class="clone address">
+        <label>Address</label>
+        <input type="text" name="Form[address][{{n}}][areacode]" size="20"/>
+        
+        <label>City</label>
+        <input type="text" name="Form[city][{{n}}][exchange]" size="20"/>
+        
+        <label>State</label>
+        <input type="text" name="Form[state][{{n}}][number]" size="2"/>
+        
+        <label>Zip</label>
+        <input type="text" name="Form[state][{{n}}][number]" size="5"/>
+    </div>
+</form>
+
+<pre style="padding:10px; margin-top:30px; border:1px solid #ddd;"></pre>
+
+
+</body>
+</html>
