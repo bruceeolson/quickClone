@@ -31,16 +31,15 @@ quickClone makes a template from the contents of the div and absolutely position
 
 To see a full example look at index.html.
 
-## Instantiation options
+## Initialization options
 
 quickClone accepts a configuration object with the following properties.  All of them are optional.
 
-property  |  type | example
+property  |  type | 
 ----------|-------|--------
-afterAdd | function | 
-afterRemove | function | 
+afterAdd | function | this function is run after a clone instance is added ( **this** references the qclone-wrapper DOM element )
+afterRemove | function | this function is run after a clone instance is removed
 html | object | {style: "margin: 0 0 10px;", class:"aClass bClass"}  adds html attributes to the .qclone-instance container
-
 
 
 ## Html structure
