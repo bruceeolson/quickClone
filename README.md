@@ -4,7 +4,7 @@ quickClone makes it easy to replicate parts of a form based on a user click.  Fo
 
 ## Basic Idea
 
-Below is part of a form that can be cloned by the user.  Let's call this a clone-template.  quickClone makes a copy of everything in the template and replaces the **{{n}}* with an index.
+Below is the address section of a form that can be cloned by the user if the user wants to supply multiple addresses.  Let's call this a **clone-template**.  quickClone makes a copy of everything in the template and replaces the **{{n}}* with an index number for each instance that is cloned.
 
 ~~~.xml
 <div class="address">
@@ -22,14 +22,26 @@ Below is part of a form that can be cloned by the user.  Let's call this a clone
 </div>
 ~~~~
 
-So, this clone-template is initialized with : `$('.address').quickClone()`
+To initialize the clone-template above use : `$('.address').quickClone()`
 
-quickClone makes a template from the contents of the div and adds control buttons.
+quickClone makes a template from the contents of the div and absolutely positions the add/remove control buttons.
 
 
 ## Full example
 
 To see a full example look at index.html.
+
+## Instantiation options
+
+quickClone accepts a configuration object with the following properties.  All of them are optional.
+
+property  |  type | example
+----------|-------|--------
+afterAdd | function | 
+afterRemove | function | 
+html | object | {style: "margin: 0 0 10px;", class:"aClass bClass"}  adds html attributes to the .qclone-instance container
+
+
 
 ## Html structure
 
